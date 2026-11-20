@@ -1,0 +1,42 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Frit konumları</title><style>
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#f3f5f8;
+color:#121a22;-webkit-text-size-adjust:100%}
+header{background:#0f6b68;color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:18px} header p{margin:2px 0 0;font-size:12px;opacity:.85}
+main{max-width:720px;margin:0 auto;padding:14px 16px 40px}
+.ara{width:100%;font-size:17px;padding:12px 14px;border:1.5px solid #8f9ba8;border-radius:12px;background:#fff}
+.cipler{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+.cip{border:1.5px solid #8f9ba8;background:#fff;border-radius:999px;padding:6px 11px;font-size:13px;color:#1f2a35}
+.cip.on{background:#0f6b68;border-color:#0f6b68;color:#fff}
+.kart{background:#fff;border:1px solid #c3ccd6;border-radius:14px;padding:12px 14px;margin:10px 0}
+.ad{font-weight:700;font-size:16px}
+.konum{margin-top:8px;font-size:16px;font-weight:600;color:#0b4f4d;background:#e3f1f0;border-radius:10px;padding:9px 11px}
+.rz{display:inline-block;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:600;margin:7px 4px 0 0}
+.alt{color:#6b7885;font-size:12px;margin-top:6px} .say{color:#6b7885;font-size:13px;margin:8px 2px}
+.durum{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin-top:7px} .durum .rz{margin:0}
+.tarih{color:#2f3a46;font-size:13px}
+.bos{color:#6b7885;text-align:center;padding:30px 0}
+</style></head><body><header><h1>Frit konumları</h1><p>Son güncelleme: 20.11.2026 08:26</p></header><main>
+<input class="ara" id="q" type="search" placeholder="Frit adı ya da konum yaz…" autocomplete="off">
+<div class="cipler"><button class="cip" data-g="y" data-v="bekliyor">Değerlendirilmedi</button><button class="cip" data-g="y" data-v="uygun">Uygun</button><button class="cip" data-g="y" data-v="sartli">Şartlı uygun</button><button class="cip" data-g="y" data-v="red">Red</button></div>
+<div class="say" id="say"></div><div id="liste"></div></main>
+<script>
+const V=[{"a": "Mavi zemin 2119 (örnek)", "k": "Arşiv / Dolap 2 / Kutu 7", "d": "arsiv", "y": "uygun", "t": "04.11.2026"}, {"a": "Yeşil pigmentli 2258 (örnek)", "k": "Laboratuvar / Dolap 11 / Kutu 8", "d": "stokta", "y": "uygun", "t": "02.11.2026"}, {"a": "Titanyum beyaz 2131 (örnek)", "k": "Laboratuvar / Dolap 4 / Kutu 2", "d": "stokta", "y": "red", "t": "23.10.2026"}, {"a": "Mavi zemin 2247 (örnek)", "k": "Laboratuvar / Dolap 3 / Kutu 4", "d": "stokta", "y": "uygun", "t": "20.10.2026"}, {"a": "Şeffaf örtü 2218 (örnek)", "k": "Laboratuvar / Dolap 11 / Kutu 4", "d": "stokta", "y": "bekliyor", "t": "11.10.2026"}, {"a": "Şeffaf örtü 2248 (örnek)", "k": "Laboratuvar / Dolap 7 / Kutu 3", "d": "stokta", "y": "uygun", "t": "23.09.2026"}, {"a": "Titanyum beyaz 2130 (örnek)", "k": "Laboratuvar / Dolap 10 / Kutu 2", "d": "stokta", "y": "red", "t": "18.09.2026"}, {"a": "Yeşil pigmentli 2224 (örnek)", "k": "Arşiv / Dolap 2 / Kutu 5", "d": "arsiv", "y": "uygun", "t": "16.09.2026"}, {"a": "Titanyum beyaz 2124 (örnek)", "k": "Arşiv / Dolap 2 / Kutu 2", "d": "arsiv", "y": "uygun", "t": "28.08.2026"}, {"a": "Akrilik dirençli 2315 (örnek)", "k": "Laboratuvar / Dolap 1 / Kutu 2", "d": "stokta", "y": "sartli", "t": "23.08.2026"}, {"a": "Krem örtü 2137 (örnek)", "k": "Arşiv / Dolap 2 / Kutu 7", "d": "arsiv", "y": "bekliyor", "t": "23.08.2026"}, {"a": "Antrasit zemin 2111 (örnek)", "k": "Arşiv / Dolap 8 / Kutu 6", "d": "arsiv", "y": "bekliyor", "t": "12.08.2026"}, {"a": "Krem örtü 2312 (örnek)", "k": "Arşiv / Dolap 6 / Kutu 7", "d": "arsiv", "y": "red", "t": "31.07.2026"}, {"a": "Antrasit zemin 2126 (örnek)", "k": "Laboratuvar / Dolap 2 / Kutu 1", "d": "stokta", "y": "uygun", "t": "29.07.2026"}, {"a": "Akrilik dirençli 2305 (örnek)", "k": "Laboratuvar / Dolap 9 / Kutu 5", "d": "stokta", "y": "sartli", "t": "14.07.2026"}, {"a": "Antrasit zemin 2338 (örnek)", "k": "Laboratuvar / Dolap 10 / Kutu 8", "d": "stokta", "y": "uygun", "t": "05.07.2026"}, {"a": "Kobalt mavi 2130 (örnek)", "k": "Arşiv / Dolap 10 / Kutu 4", "d": "arsiv", "y": "uygun", "t": "01.07.2026"}, {"a": "Antrasit zemin 2274 (örnek)", "k": "Arşiv / Dolap 12 / Kutu 6", "d": "arsiv", "y": "uygun", "t": "25.06.2026"}, {"a": "Mat beyaz 2192 (örnek)", "k": "Laboratuvar / Dolap 2 / Kutu 4", "d": "stokta", "y": "uygun", "t": "25.06.2026"}, {"a": "Beyaz örtü 2147 (örnek)", "k": "Arşiv / Dolap 5 / Kutu 8", "d": "arsiv", "y": "uygun", "t": "23.06.2026"}, {"a": "Krem örtü 2102 (örnek)", "k": "Laboratuvar / Dolap 3 / Kutu 7", "d": "stokta", "y": "uygun", "t": "21.06.2026"}, {"a": "Şeffaf örtü 2363 (örnek)", "k": "Laboratuvar / Dolap 10 / Kutu 1", "d": "stokta", "y": "uygun", "t": "15.06.2026"}, {"a": "Siyah zemin 2395 (örnek)", "k": "Laboratuvar / Dolap 10 / Kutu 7", "d": "stokta", "y": "bekliyor", "t": "10.06.2026"}, {"a": "Mat beyaz 2386 (örnek)", "k": "Arşiv / Dolap 7 / Kutu 7", "d": "arsiv", "y": "uygun", "t": "03.05.2026"}],D={"stokta": ["Stokta", "#e4f3ea", "#1d8048"], "arsiv": ["Arşivde", "#f9eee4", "#a4521b"]},Y={"bekliyor": ["Değerlendirilmedi", "#f8f1da", "#8a6a08"], "uygun": ["Uygun", "#e4f3ea", "#1d8048"], "sartli": ["Şartlı uygun", "#e8eefb", "#2f5fc4"], "red": ["Red", "#fbeae8", "#c0392f"]},s={q:"",d:"",y:""};
+const tr=t=>String(t||"").replace(/I/g,"ı").replace(/İ/g,"i").toLowerCase();
+const an=t=>tr(t).replace(/[\s\-_.,/]+/g,"");
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+const rz=(S,k)=>S[k]?`<span class="rz" style="background:${S[k][1]};color:${S[k][2]}">${esc(S[k][0])}</span>`:"";
+function goster(){const kel=[];tr(s.q).split(/\s+/).map(an).filter(Boolean).forEach(k=>
+k.length===1&&kel.length?kel[kel.length-1]+=k:kel.push(k));
+const L=V.filter(f=>(!s.d||f.d===s.d)&&(!s.y||f.y===s.y)&&kel.every(k=>an(f.a+" "+f.k+" "+(D[f.d]||[""])[0]+" "+(Y[f.y]||[""])[0]).includes(k)));
+document.getElementById("say").textContent=L.length+" / "+V.length+" frit";
+document.getElementById("liste").innerHTML=L.length?L.map(f=>`<div class="kart"><div class="ad">${esc(f.a)}</div>
+<div class="konum">📍 ${esc(f.k||"Konum girilmemiş")}</div><div class="durum">${rz(Y,f.y)}${f.t?`<span class="tarih">Ergitme ${esc(f.t)}</span>`:""}</div></div>`).join(""):'<div class="bos">Sonuç yok</div>';}
+document.getElementById("q").addEventListener("input",e=>{s.q=e.target.value;goster();});
+document.querySelectorAll(".cip").forEach(b=>b.addEventListener("click",()=>{const g=b.dataset.g;
+s[g]=s[g]===b.dataset.v?"":b.dataset.v;document.querySelectorAll(`.cip[data-g="${g}"]`).forEach(x=>
+x.classList.toggle("on",x.dataset.v===s[g]));goster();}));
+goster();
+</script></body></html>
